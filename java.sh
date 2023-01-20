@@ -7,7 +7,7 @@ if [ $? -eq 0 ]; then
   echo ""
   wget -L https://raw.githubusercontent.com/jatinkalwar/javarunner/main/.update.txt > /dev/null 2>&1
   ver=$(cat .update.txt)
-  if [[ $bas = 'v1.1' ]];
+  if [[ $ver = 'v1.1' ]];
   then
   clear
   echo -e "\e[31m# \e[93m UPDATING SCRIPT OF \e[31mv1.0"
@@ -17,6 +17,7 @@ if [ $? -eq 0 ]; then
   else
   echo ""
   fi
+  rm .update.txt
 
 else
 clear
