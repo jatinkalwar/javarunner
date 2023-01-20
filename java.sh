@@ -21,7 +21,7 @@ if [ $? -eq 0 ]; then
 else
 clear
    echo -e "\e[91m       You Are Not Connected To Internet!!!!"
-exgo ""
+echo ""
 exit
 fi
 }
