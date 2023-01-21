@@ -1,6 +1,5 @@
 #!bin/bash
 #CODED BY THEJATINKALWAR
-v="v1.0"
 servo() {
 wget -q --spider https://github.com/jatinkalwar
 
@@ -11,10 +10,23 @@ if [ $? -eq 0 ]; then
   if [[ $ver = 'v1.1' ]];
   then
   clear
-  echo -e "\e[31m# \e[93m UPDATING SCRIPT \e[31m$v \e[93mTO \e[31m$ver"
-  rm java.sh
+  echo -e "\e[31m# \e[93m UPDATING SCRIPT OF \e[31mv1.0"
+  mv java.sh jatt.sh
   wget -L https://raw.githubusercontent.com/jatinkalwar/javarunner/main/java.sh > /dev/null 2>&1
+  #FILE= java.sh
+  if [ -f "java.sh" ];
+  then
+  echo ""
+  echo -e "\e[31m# \e[93m SCRIPT DOWNLOADED"
+  sleep 2.0
+  rm jatt.sh
   bash java.sh
+  else
+  echo -e "\e[31m# \e[93m FAILED TO DOWNLOAD"
+  mv jatt.sh java.sh
+  sleep 2.0
+  check
+  fi
   else
   echo ""
   fi
@@ -38,14 +50,12 @@ mkdir java
 fi
 
 class(){
-#FILE= Test.class
-if [ -f "Test.class" ]; 
+FILE= Test.class
+if [ -f "$FILE" ]; 
 then
-echo -e "\e[31m           OUTPUT         \e[91m"
-echo -e "\e[91m"
 java Test
 echo ""
-echo -e "\e[31m# \e[93m JAVA RUNNER\e[93m \e[92m(\e[31m$v\e[92m)"
+echo -e "\e[31m# \e[93m JAVA RUNNER\e[93m \e[92m(\e[31mv1.0\e[92m)"
 echo -e "\e[92m[\e[91m1\e[92m]\e[93m Edit Again\e[93m"
 echo -e "\e[92m[\e[91m2\e[92m]\e[93m Save With Class Name\e[93m"
 echo -e "\e[92m[\e[91m3\e[92m]\e[93m Save & exit\e[93m"
