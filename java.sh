@@ -18,7 +18,8 @@ if [ $? -eq 0 ]; then
   else
   echo ""
   fi
-  rm .update.txt
+  
+rm .update.txt
 
 else
 clear
