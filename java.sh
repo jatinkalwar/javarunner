@@ -13,7 +13,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[31m# \e[93m UPDATING SCRIPT OF \e[31mv1.0"
   mv java.sh jatt.sh
   wget -L https://raw.githubusercontent.com/jatinkalwar/javarunner/main/java.sh > /dev/null 2>&1
-  #FILE= java.sh
+  rm .update.txt
   if [ -f "java.sh" ];
   then
   echo ""
@@ -30,7 +30,7 @@ if [ $? -eq 0 ]; then
   else
   echo ""
   fi
-  rm .update.txt
+  
 
 else
 clear
