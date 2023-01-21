@@ -18,8 +18,7 @@ if [ $? -eq 0 ]; then
   else
   echo ""
   fi
-  
-rm .update.txt
+  rm .update.txt
 
 else
 clear
@@ -39,9 +38,11 @@ mkdir java
 fi
 
 class(){
-FILE= Test.class
-if [ -f "$FILE" ]; 
+#FILE= Test.class
+if [ -f "Test.class" ]; 
 then
+echo -e "\e[31m           OUTPUT         \e[91m"
+echo -e "\e[91m"
 java Test
 echo ""
 echo -e "\e[31m# \e[93m JAVA RUNNER\e[93m \e[92m(\e[31m$v\e[92m)"
