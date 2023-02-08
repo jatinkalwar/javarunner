@@ -1,8 +1,9 @@
 #!bin/bash
 #CODED BY THEJATINKALWAR
 #-----------------------------Version Intial.----------------------------
-v="v1.1"  #current version
-ve="v1.2" #next version
+v="v1.2"  #current version
+ve="v1.3" #next version
+vem="v1.3.1" #Patch Update version
 #----------------------------remove directory if exists-------------------
 if [ -d javarunner ]; then
 rm -rf javarunner
@@ -15,6 +16,12 @@ if [ -f .msg.txt ]; then
 rm .msg.txt
 fi
 servo() {
+upd(){
+  rm java.sh
+  #wget -L https://raw.githubusercontent.com/jatinkalwar/javarunner/main/java.sh > /dev/null 2>&1
+  mv javarunner/java.sh .
+  bash java.sh
+  }
 #--------------------------checking internet connection---------------------------
 wget -q --spider https://github.com/jatinkalwar
 if [ $? -eq 0 ]; then
@@ -25,17 +32,11 @@ if [ $? -eq 0 ]; then
   #wget -L https://raw.githubusercontent.com/jatinkalwar/javarunner/main/.msg.txt > /dev/null 2>&1
   ver=$(cat .update.txt)
 #--------------------------check update------------------------------------
-  if [[ $ver = $ve ]];
+  if [[ $ver = $ve ]] || [[ $ver = $vem ]];
   then
   clear
 #--------------------------update code------------------------------------ 
   echo -e "\e[31m# \e[93m UPDATING SCRIPT \e[31m$v \e[93mTO \e[31m$ver"
- upd(){
-  rm java.sh
-  #wget -L https://raw.githubusercontent.com/jatinkalwar/javarunner/main/java.sh > /dev/null 2>&1
-  mv javarunner/java.sh .
-  bash java.sh
-  }
   upd
   else
   echo ""
@@ -60,7 +61,7 @@ fi
 class(){
 mug=$(cat .msg.txt)
 #---------------------------reading message from server if available-----------------------
-if [[ $mug = 'No' ]];
+if [[ $mug = 'No' ]] || [[ $mug = 'no' ]];
 then
 ac=$(head --bytes 7 Test.java)
 if [[ $ac = 'package' ]]; then
@@ -87,15 +88,16 @@ echo -e "\e[91m"
 figlet $mug | lolcat
 rm .msg.txt
 fi
-echo ""
+echo -e " "
 echo -e "\e[31m# \e[93m JAVA RUNNER\e[93m \e[92m(\e[31m$v\e[92m)"
 echo -e "\e[92m[\e[91m1\e[92m]\e[93m Edit Again\e[93m"
-echo -e "\e[92m[\e[91m2\e[92m]\e[93m Save With Class Name\e[93m"
-echo -e "\e[92m[\e[91m3\e[92m]\e[93m Save & exit\e[93m"
-echo -e "\e[92m[\e[91m4\e[92m]\e[93m New Program\e[93m"
-echo -e "\e[92m[\e[91m5\e[92m]\e[93m Re-run\e[93m"
-echo -e "\e[92m[\e[91m6\e[92m]\e[93m Update\e[93m"
-echo -e "\e[92m[\e[91m7\e[92m]\e[93m Exit\e[93m"
+echo -e "\e[92m[\e[91m2\e[92m]\e[93m Save By Class Name\e[93m"
+echo -e "\e[92m[\e[91m3\e[92m]\e[93m Change Main Class Name To Test\e[93m"
+echo -e "\e[92m[\e[91m4\e[92m]\e[93m Save & exit\e[93m"
+echo -e "\e[92m[\e[91m5\e[92m]\e[93m New Program\e[93m"
+echo -e "\e[92m[\e[91m6\e[92m]\e[93m Re-run\e[93m"
+echo -e "\e[92m[\e[91m7\e[92m]\e[93m Update\e[93m"
+echo -e "\e[92m[\e[91m0\e[92m]\e[93m Exit\e[93m"
 echo -ne "\e[92mSelect Option\e[0m: \e[92m"
 read ch
     clear
@@ -114,7 +116,7 @@ read ch
     read kali
     echo -e "\e[31m1 \e[92mFor Confirm \e[31m2 \e[92mFor Cancel \e[31m0 \e[92mFor Exit\e[0m: \e[92m"
     read chh
-    if [ $chh -eq 1 ];then
+   if [ $chh -eq 1 ];then
     sed -i s/Test/$kali/g Test.java
     mv Test.java $kali.java
     mv $kali.java java
@@ -128,7 +130,16 @@ read ch
     fi
     }
     reload
+
     elif [ $ch -eq 3 ]; then
+    clear
+    echo -e "\e[31mYou Are Changing Main Class Name To Test.java"
+    echo " "
+    echo -ne "\e[92mEnter Your Class Name Which You Had Wrote in Program:- "
+    read ali
+    sed -i s/$ali/Test/g Test.java
+    bash java.sh
+   elif [ $ch -eq 4 ]; then
     jelly=$(cat java/save.txt)
 	jelly=$((jelly+1))
     rm java/save.txt
@@ -138,7 +149,8 @@ read ch
     mv Test.java $name.java
     mv $name.java java
 	exit 
-    elif [ $ch -eq 4 ];then
+	
+    elif [ $ch -eq 5 ];then
     jelly=$(cat java/save.txt)
     jelly=$((jelly+1))
     rm java/save.txt
@@ -151,12 +163,16 @@ read ch
     mv Test.java $name.java
     mv $name.java java
     nano Test.java
-    elif [ $ch -eq 5 ];then
-    bash java.sh
+
     elif [ $ch -eq 6 ];then
-    upd
+    bash java.sh
+
     elif [ $ch -eq 7 ];then
+    upd
+
+    elif [ $ch -eq 0 ];then
     exit
+
     else 
     echo -e "\e[92mWrong Option Mere Bhai"
     fi
@@ -172,6 +188,10 @@ else
 clear
 echo ""
 echo -e "   \e[31mBHAI KR KYA RAHA HAI TU... KOI FILE NAHI HAI Test.java K NAAM SE DEKH KAHI SPELLING MISTAKE HO"
+echo -e " "
+echo -e "    \e[92mWait Bro M Banata Hu Test.java K Naam Se File Bs Code Tum Likh Dena......"
+sleep 2.0
+nano Test.java
 fi
 }
 check
