@@ -3,7 +3,7 @@
 #-----------------------------Version Intial.----------------------------
 v="v1.2"  #current version
 ve="v1.3" #next version
-vem="v1.3.1" #Patch Update version
+vem="v1.2.1" #Patch Update version
 #----------------------------remove directory if exists-------------------
 if [ -d javarunner ]; then
 rm -rf javarunner
