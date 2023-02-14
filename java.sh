@@ -1,7 +1,7 @@
 #!bin/bash
 #CODED BY THEJATINKALWAR
 #-----------------------------Version Intial.----------------------------
-v="v1.2"  #current version
+v="v1.3"  #current version
 ve="v1.4" #next version
 vem="v1.3.1" #Patch Update version
 #----------------------------remove directory if exists-------------------
